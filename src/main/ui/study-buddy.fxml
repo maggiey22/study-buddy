@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<SplitPane dividerPositions="0.29797979797979796" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.Controller">
+  <items>
+    <AnchorPane maxWidth="174.0" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+         <children>
+            <VBox layoutY="-2.0" prefHeight="418.0" prefWidth="174.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <MenuBar prefHeight="33.0">
+                     <menus>
+                        <Menu mnemonicParsing="false" text="File">
+                           <items>
+                              <Menu mnemonicParsing="false" text="Save...">
+                                 <items>
+                                    <MenuItem fx:id="saveLibrariesMenuItem" mnemonicParsing="false" onAction="#handleButtonAction" text="Save libraries..." />
+                                    <MenuItem fx:id="saveLCsMenuItem" mnemonicParsing="false" onAction="#handleButtonAction" text="Save learning centres..." />
+                                 </items>
+                              </Menu>
+                              <Menu mnemonicParsing="false" text="Load...">
+                                 <items>
+                                    <MenuItem fx:id="loadLibrariesMenuItem" mnemonicParsing="false" onAction="#handleButtonAction" text="Load libraries..." />
+                                    <MenuItem fx:id="loadLCsMenuItem" mnemonicParsing="false" onAction="#handleButtonAction" text="Load learning centres..." />
+                                 </items>
+                              </Menu>
+                              <Menu mnemonicParsing="false" text="Clear saved data...">
+                                <items>
+                                    <MenuItem fx:id="clearSavedLibData" mnemonicParsing="false" text="Clear saved libraries..." />
+                                  <MenuItem fx:id="clearSavedLCdata" mnemonicParsing="false" text="Clear saved learning centres..." />
+                                </items>
+                              </Menu>
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Reset">
+                           <items>
+                              <MenuItem fx:id="reloadMapMenuItem" mnemonicParsing="false" text="Reload map" />
+                           </items>
+                        </Menu>
+                        <Menu mnemonicParsing="false" text="Help">
+                           <items>
+                              <MenuItem fx:id="userGuideMenuItem" mnemonicParsing="false" text="User guide" />
+                              <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" text="About" />
+                           </items>
+                        </Menu>
+                     </menus>
+                  </MenuBar>
+                  <Accordion fx:id="placesAccordion" layoutY="24.0" prefHeight="415.0" prefWidth="174.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="24.0">
+                    <panes>
+                      <TitledPane fx:id="librariesPane" prefHeight="359.0" prefWidth="174.0" text="Libraries">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="392.0" prefWidth="172.0">
+                                 <children>
+                                    <ListView fx:id="libraryListView" layoutX="-1.0" layoutY="-2.0" prefHeight="335.0" prefWidth="174.0" />
+                                    <Button fx:id="addLibraryButton" layoutX="-1.0" layoutY="333.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="174.0" text="Quick Add Library" />
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                           <font>
+                              <Font name="System Font" size="13.0" />
+                           </font>
+                      </TitledPane>
+                      <TitledPane fx:id="lcPane" text="Learning Centres">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="156.0">
+                                 <children>
+                                    <ListView fx:id="learningCentreListView" layoutX="-1.0" prefHeight="334.0" prefWidth="174.0" />
+                                    <Button fx:id="addLearningCentreButton" layoutX="-1.0" layoutY="334.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="174.0" text="Quick Add Learning Centre">
+                                       <font>
+                                          <Font size="12.0" />
+                                       </font></Button>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </TitledPane>
+                    </panes>
+                  </Accordion>
+               </children>
+            </VBox>
+         </children></AnchorPane>
+    <AnchorPane>
+         <children>
+            <TabPane layoutX="92.0" layoutY="44.0" prefHeight="418.0" prefWidth="416.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <tabs>
+                <Tab fx:id="mapTab" closable="false" text="Map">
+                  <content>
+                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="416.0" />
+                  </content>
+                     <contextMenu>
+                        <ContextMenu>
+                          <items>
+                            <MenuItem mnemonicParsing="false">
+                                 <graphic>
+                                    <CheckBox fx:id="showMarkersCheckBox" mnemonicParsing="false" text="Show markers" />
+                                 </graphic>
+                              </MenuItem>
+                          </items>
+                        </ContextMenu>
+                     </contextMenu>
+                </Tab>
+                  <Tab closable="false" text="Overview">
+                     <content>
+                        <AnchorPane>
+                           <children>
+                              <TextArea fx:id="librariesTextArea" editable="false" layoutX="195.0" layoutY="36.0" prefHeight="155.0" prefWidth="204.0" promptText="Your libraries will appear here." wrapText="true" />
+                              <TextArea fx:id="learningCentresTextArea" editable="false" layoutX="195.0" layoutY="229.0" prefHeight="155.0" prefWidth="204.0" promptText="Your learning centres will appear here." wrapText="true" />
+                              <TextArea fx:id="scheduleOfSelectedPlaceTextArea" editable="false" layoutX="19.0" layoutY="73.0" prefHeight="312.0" prefWidth="161.0" promptText="Open hours of the selected place will appear here." wrapText="true" />
+                              <Label layoutX="195.0" layoutY="16.0" prefHeight="17.0" prefWidth="181.0" text="Libraries" />
+                              <Label layoutX="195.0" layoutY="209.0" prefHeight="17.0" prefWidth="181.0" text="Learning Centres" />
+                              <TextField fx:id="overviewPlaceTextField" editable="false" layoutX="19.0" layoutY="36.0" prefHeight="27.0" prefWidth="161.0" promptText="Selected place" />
+                              <Label layoutX="19.0" layoutY="16.0" prefHeight="17.0" prefWidth="181.0" text="Open hours" />
+                           </children></AnchorPane>
+                     </content>
+                  </Tab>
+                <Tab closable="false" text="Edit Place">
+                  <content>
+                    <AnchorPane>
+                           <children>
+                              <Label layoutX="28.0" layoutY="243.0" prefHeight="27.0" prefWidth="98.0" text="Open time" />
+                              <Label layoutX="216.0" layoutY="243.0" prefHeight="27.0" prefWidth="98.0" text="Close time" />
+                              <Label alignment="CENTER" layoutX="95.0" layoutY="274.0" prefHeight="14.0" prefWidth="22.0" text=":" />
+                              <Label alignment="CENTER" layoutX="283.0" layoutY="274.0" prefHeight="14.0" prefWidth="22.0" text=":" />
+                              <Button fx:id="submitPlaceChangesButton" layoutX="271.0" layoutY="374.0" mnemonicParsing="false" text="Submit changes" />
+                              <TextField fx:id="streetAddressTextField" layoutX="28.0" layoutY="331.0" promptText="2366 Main Mall" />
+                              <Label layoutX="28.0" layoutY="304.0" prefHeight="27.0" prefWidth="98.0" text="Street address" />
+                              <TextField fx:id="cityTextField" layoutX="216.0" layoutY="331.0" prefHeight="27.0" prefWidth="91.0" promptText="Vancouver" />
+                              <Label layoutX="216.0" layoutY="304.0" prefHeight="27.0" prefWidth="98.0" text="City" />
+                              <TextField fx:id="provinceTextField" layoutX="328.0" layoutY="331.0" prefHeight="27.0" prefWidth="61.0" promptText="BC" />
+                              <Label layoutX="328.0" layoutY="304.0" prefHeight="27.0" prefWidth="80.0" text="Province" />
+                              <TextField fx:id="placeNameTextField" layoutX="28.0" layoutY="35.0" prefHeight="27.0" prefWidth="355.0" promptText="Name" />
+                              <ListView fx:id="placeDayListView" layoutX="28.0" layoutY="74.0" prefHeight="161.0" prefWidth="167.0" />
+                              <ListView fx:id="placeSessionsListView" layoutX="216.0" layoutY="93.0" prefHeight="142.0" prefWidth="167.0" />
+                              <Label layoutX="28.0" layoutY="9.0" prefHeight="27.0" prefWidth="98.0" text="Place name" />
+                              <Label layoutX="216.0" layoutY="68.0" prefHeight="27.0" prefWidth="98.0" text="Open hours" />
+                              <TextField fx:id="openHourTextField" layoutX="28.0" layoutY="269.0" prefHeight="27.0" prefWidth="69.0" promptText="23" />
+                              <TextField fx:id="openMinuteTextField" layoutX="115.0" layoutY="269.0" prefHeight="27.0" prefWidth="69.0" promptText="59" />
+                              <TextField fx:id="closeHourTextField" layoutX="216.0" layoutY="269.0" prefHeight="27.0" prefWidth="69.0" promptText="23" />
+                              <TextField fx:id="closeMinuteTextField" layoutX="303.0" layoutY="269.0" prefHeight="27.0" prefWidth="69.0" promptText="59" />
+                           </children></AnchorPane>
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+         </children></AnchorPane>
+  </items>
+   <cursor>
+      <Cursor fx:constant="DEFAULT" />
+   </cursor>
+</SplitPane>
