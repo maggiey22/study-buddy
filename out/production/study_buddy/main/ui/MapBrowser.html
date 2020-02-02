@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+/*
+* COPIED FROM GOOGLE MAPS API DEMO -- https://developers.google.com/maps/documentation/javascript/examples/marker-labels
+*/
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Study Locations Map</title>
+    <style>
+      #map {
+        height: 100%;
+      }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=KEY_REMOVED_!!!!"></script>
+    <script>
+      var labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      var labelIndex = 0;
+
+      function initialize() {
+        var ubcIcics = { lat: 49.261435, lng: -123.248878 };
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: ubcIcics
+        });
+
+        google.maps.event.addListener(map, 'click', function(event) {
+          addMarker(event.latLng, map);
+        });
+
+        addMarker(ubcIcics, map);
+      }
+
+      function addMarker(location, map) {
+        var marker = new google.maps.Marker({
+          position: location,
+          label: labels[labelIndex++ % labels.length],
+          map: map
+        });
+      }
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
